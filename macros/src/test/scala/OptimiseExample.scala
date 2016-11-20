@@ -1,3 +1,5 @@
+package foo
+
 import Optimise._
 
 object OptimiseExample extends App {

@@ -1,3 +1,5 @@
+package foo
+
 import Echo._
 
 object HelloWorldExample extends App {

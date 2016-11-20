@@ -1,3 +1,5 @@
+package foo
+
 import scala.reflect.macros.blackbox.Context
 
 object PrettyPrinting {
