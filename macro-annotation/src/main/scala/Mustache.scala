@@ -40,7 +40,14 @@ object Mustache {
       case List(q"object $name extends $parent { ..$body }") =>
         val templateBody: String = loadTemplate(filename)
         val variableNames: Set[String] = TemplateParser.findVariableNames(templateBody)
-        ???
+        val ctorParams = variableNames.toSeq.sorted.map(name => q"val ${TermName(name)}: String")
+        q"""
+          object $name extends $parent {
+            val template: String = $templateBody
+            $body
+          }
+          case class ${TypeName(name.toString)}(..$ctorParams)
+        """
 
       case _ => fail("You must annotate an object definition without an accompanying class.")
     }
