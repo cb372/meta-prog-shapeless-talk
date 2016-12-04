@@ -75,6 +75,9 @@ object CaseClassToCaseClass {
     }
 
     object Transform {
+      // Credit: this is based on @davegurnell's "migrations" example:
+      // https://github.com/underscoreio/shapeless-guide-code/blob/solutions/migrations/src/main/scala/migrations.scala
+
       implicit def genericTransform[
         A,
         B,
