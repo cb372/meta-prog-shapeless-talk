@@ -3,8 +3,8 @@ package foo
 
 object CaseClassToMapExample extends App {
 
-  case class Foo(a: Int, b: String)
-  val instance = Foo(123, "wow")
+  case class Foo(wow: String, yeah: Int)
+  val instance = Foo("hello", 123)
 
   println("Using macro:")
   println(CaseClassToMap.Macros.caseClassToMap(instance))
