@@ -24,9 +24,12 @@ object Query {
     val tableName = weakTypeOf[A].typeSymbol.name.toString.toLowerCase
 
     condition match {
-      case q"""???""" =>
+      case q"""_.$fieldName == ${value: String}""" =>
         q"""
-        ???
+        new Query {
+          def tableName = $tableName
+          def filter = ${fieldName.toString} -> $value
+        }
         """
       case _ =>
         c.abort(c.enclosingPosition, "Sorry, I don't understand")
